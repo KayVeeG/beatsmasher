@@ -3,19 +3,19 @@
 namespace smash
 {
 
-    HUB75_I2S_CFG matrix::ensureDBuff(HUB75_I2S_CFG mxconfig)
+    HUB75_I2S_CFG Matrix::ensureDBuff(HUB75_I2S_CFG mxconfig)
     {
         mxconfig.double_buff = true;
         return mxconfig;
     }
 
-    matrix::matrix(HUB75_I2S_CFG mxconfig)
+    Matrix::Matrix(HUB75_I2S_CFG mxconfig)
         : m_matrixPanel(ensureDBuff(mxconfig))
     {
         m_matrixPanel.begin();
     };
 
-    void matrix::drawCanvas(const Canvas &canvas)
+    void Matrix::drawCanvas(const Canvas &canvas)
     {
         for (size_t y = 0; y < canvas.getHeight(); y++)
         {
@@ -26,17 +26,17 @@ namespace smash
         }
     }
 
-    void matrix::swapFrameBuffers()
+    void Matrix::swapFrameBuffers()
     {
         m_matrixPanel.flipDMABuffer();
     }
 
-    size_t matrix::getWidth() const
+    size_t Matrix::getWidth() const
     {
         return m_matrixPanel.width();
     }   
 
-    size_t matrix::getHeight() const
+    size_t Matrix::getHeight() const
     {
         return m_matrixPanel.height();
     }   

@@ -6,13 +6,13 @@
 
 namespace smash
 {
-    class matrix : public Display
+    class Matrix : public Display
     {
         MatrixPanel_I2S_DMA m_matrixPanel;
         HUB75_I2S_CFG ensureDBuff(HUB75_I2S_CFG dbuff);
     public:
-        matrix(HUB75_I2S_CFG mxconfig);
-        virtual ~matrix() = default;
+        Matrix(HUB75_I2S_CFG mxconfig);
+        virtual ~Matrix() = default;
 
         void drawCanvas(const Canvas& canvas) override;
         void swapFrameBuffers() override;

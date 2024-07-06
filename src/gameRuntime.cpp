@@ -51,7 +51,7 @@ public:
             _pins // Pin mapping
         );
         // set matrix
-        auto matrix = std::make_shared<smash::matrix>(mxconfig);
+        auto matrix = std::make_shared<smash::Matrix>(mxconfig);
         setDisplay(matrix);
 
     }
