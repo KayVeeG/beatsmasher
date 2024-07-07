@@ -5,6 +5,7 @@
 
 class NoteBlockLogic : public smash::BehaviourScript
 {
+    bool m_TonePlaySent = false;
 public:
     static constexpr float s_fallSpeed = 10.0f;
 
@@ -21,14 +22,15 @@ public:
             transform->translate(smash::Vector2::right() * s_fallSpeed * (float)deltaTime);
 
             // check for falling out of the screen
-            if (transform->getPosition().x >= 64)
+            if (transform->getPosition().x + transform->getScale().x >= 64)
             {
                 // Get tone source
                 auto toneSource = static_cast<smash::ToneSource*>(getComponent("ToneSource"));
-                if (toneSource)
+                if (toneSource && !m_TonePlaySent)
                 {
                     // play the note
-                    toneSource->play(0);
+                    toneSource->play();
+                    m_TonePlaySent = true;
                 }
             }
         }

@@ -9,51 +9,60 @@
 #define C_PIN 21
 #define D_PIN 19
 #define E_PIN -1
+#define CLK_PIN 18
 #define LAT_PIN 5
 #define OE_PIN 15
-#define CLK_PIN 18
 
-#define SPEAKER_0_PIN 25
+
+#ifndef _GAME_RUNTIME_CPP
+#define _GAME_RUNTIME_CPP
 
 #include <smash.h>
 #include "scenes/SampleScene.cpp"
 
-class GameRuntime : public smash::Runtime
+class GameRuntime : public smash::MasterRuntime
 {
 public:
-
     GameRuntime() = default;
-    ~GameRuntime() = default;
+    virtual ~GameRuntime() = default;
 
     void initialize() override
     {
-        // Add a button to the input system
-        //addInputDevice(std::make_shared<smash::Button>("Test_Button", 2));  
+
+        // Establish slave communication
+        Serial.begin(115200);
+
+        // Initialize scene
+        auto initialScene = std::make_shared<SampleScene>();
 
         // Add scene
-        auto sampleScene = std::make_shared<SampleScene>();
-        addScene(sampleScene);
 
+        addScene(initialScene);
 
         // Set active scene
-        setActiveScene(sampleScene);
+        setActiveScene(initialScene.get());
 
-        // Configure matrix
+       // Make matrix pins
         HUB75_I2S_CFG::i2s_pins _pins = {
             R1_PIN, G1_PIN, B1_PIN, R2_PIN, G2_PIN, B2_PIN,
             A_PIN, B_PIN, C_PIN, D_PIN, E_PIN, LAT_PIN, OE_PIN, CLK_PIN
         };
 
+        // Make matrix config
         HUB75_I2S_CFG mxconfig(
             64,   // Module width
             32,   // Module height
             1,    // Chain length
             _pins // Pin mapping
         );
-        // set matrix
+
+        // initialze matrix
         auto matrix = std::make_shared<smash::Matrix>(mxconfig);
+
+        // add matrix
         setDisplay(matrix);
 
     }
-
 };
+
+#endif

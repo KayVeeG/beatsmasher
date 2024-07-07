@@ -18,6 +18,11 @@ namespace smash
         m_duration = duration;
     }
 
+    void ToneSource::setSpeakerIndex(int speakerIndex)
+    {
+        m_speakerIndex = speakerIndex;
+    }
+
     note_t ToneSource::getNote() const
     {
         return m_note;
@@ -33,18 +38,37 @@ namespace smash
         return m_duration;
     }
 
-    void ToneSource::play(int speakerIndex)
+    int ToneSource::getSpeakerIndex() const
     {
-        g_slaveCom.println(_COM_SPEAKER_COMMAND(speakerIndex, m_note, m_octave).c_str());
-        Serial.println(_COM_SPEAKER_COMMAND(speakerIndex, m_note, m_octave).c_str());
+        return m_speakerIndex;
     }
 
-    void ToneSource::abort(int speakerIndex)
+    void ToneSource::play()
     {
-        //g_toneProvider->stop(speakerIndex);
+        Communication::_CMD_SPEAKER_NOTE(m_speakerIndex, m_note, m_octave);
+        m_expandedDuration = 0;
+    }
+
+    void ToneSource::abort()
+    {
+        Serial.println("Aborting tone source");
+        Communication::_CMD_SPEAKER_SILENT(m_speakerIndex);
+        m_expandedDuration = -1;
     }
     std::string ToneSource::getTypeName() const
     {
         return "ToneSource";
+    }
+
+    void ToneSource::update(double deltaTime)
+    {
+        if (m_expandedDuration >= 0)
+        {
+            m_expandedDuration += deltaTime;
+            if (m_expandedDuration >= m_duration)
+            {
+                abort();
+            }
+        }
     }
 }

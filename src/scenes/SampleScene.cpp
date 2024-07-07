@@ -10,7 +10,7 @@ class SampleScene : public smash::Scene
 public:
     SampleScene()
     {
-        instantiate(std::make_shared<NoteBlock>());
+        instantiate(std::make_shared<NoteBlock>(0, NOTE_F, 4, 1.0f));
     }
     ~SampleScene() = default;
 

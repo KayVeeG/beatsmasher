@@ -8,10 +8,10 @@
 class NoteBlock : public smash::GameObject
 {
 public:
-    NoteBlock()
+    NoteBlock(int buttonIndex, note_t note, int octave, float duration)
     {
         // Init transform
-        auto transform = std::make_shared<smash::Transform>(0.0f, 0.0f, 4.0f, 4.0f);
+        auto transform = std::make_shared<smash::Transform>(0.0f, (float)buttonIndex * 4.0f, duration * NoteBlockLogic::s_fallSpeed, 4.0f);
 
         // Init shader renderer
         auto shaderRenderer = std::make_shared<smash::ShaderRenderer>();
@@ -33,9 +33,10 @@ public:
 
         // Init tone source
         auto toneSource = std::make_shared<smash::ToneSource>();
-        toneSource->setNote(NOTE_A);
-        toneSource->setOctave(4);
-        toneSource->setDuration(1.0f);
+        toneSource->setNote(note);
+        toneSource->setOctave(octave);
+        toneSource->setDuration(duration);
+        toneSource->setSpeakerIndex(buttonIndex);
 
         // Add components
         addComponent(transform);
