@@ -32,18 +32,29 @@ namespace smash
             {
                 if (splitMessage[0] == Communication::_COM_SPEAKER_NOTE)
                 {
-                    Serial.println("Speaker note command received: ");
                     int index = splitMessage[1].toInt();
                     note_t note = (note_t)splitMessage[2].toInt();
                     int octave = splitMessage[3].toInt();
                     // Call the speaker note command
-                    m_speakers[index]->playNote(note, octave);
+                    for (auto speaker : m_speakers)
+                    {
+                        if (speaker->getIndex() == index)
+                        {
+                            speaker->playNote(note, octave);
+                        }
+                    }
                 }
                 else if (splitMessage[0] == Communication::_COM_SPEAKER_SILENT)
                 {
                     int index = splitMessage[1].toInt();
                     // Call the speaker silent command
-                    m_speakers[index]->stopNote();
+                    for (auto speaker : m_speakers)
+                    {
+                        if (speaker->getIndex() == index)
+                        {
+                            speaker->stopNote();
+                        }
+                    }
                 }
             }
             

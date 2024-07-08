@@ -1,5 +1,10 @@
 
-#define SPEAKER_0 26
+#define SPEAKER_0 12
+#define SPEAKER_1 13
+#define SPEAKER_2 19
+#define SPEAKER_3 18
+#define SPEAKER_4 5
+#define SPEAKER_5 15
 
 #ifndef _CIRCUI_RUNTIME_H
 #define _CIRCUI_RUNTIME_H
@@ -15,7 +20,12 @@ class CircuitRuntime : public smash::SlaveRuntime
         void initialize() override
         {
             SlaveRuntime::initialize();
-            SlaveRuntime::addSpeaker(std::make_shared<smash::Speaker>(0, 12));
+            SlaveRuntime::addSpeaker(std::make_shared<smash::Speaker>(0, SPEAKER_0));
+            SlaveRuntime::addSpeaker(std::make_shared<smash::Speaker>(1, SPEAKER_1));
+            SlaveRuntime::addSpeaker(std::make_shared<smash::Speaker>(2, SPEAKER_2));
+            SlaveRuntime::addSpeaker(std::make_shared<smash::Speaker>(3, SPEAKER_3));
+            SlaveRuntime::addSpeaker(std::make_shared<smash::Speaker>(4, SPEAKER_4));
+            SlaveRuntime::addSpeaker(std::make_shared<smash::Speaker>(5, SPEAKER_5));
             SlaveRuntime::addButton(smash::SlaveButton(0, 36));
             SlaveRuntime::addButton(smash::SlaveButton(1, 39));
             SlaveRuntime::addButton(smash::SlaveButton(2, 34));
