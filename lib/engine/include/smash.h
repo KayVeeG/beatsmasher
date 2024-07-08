@@ -20,3 +20,4 @@
 #include "speaker.h"
 #include "slaveInputSystem.h"
 #include "inputSystem.h"
+#include "lcdDisplay.h"

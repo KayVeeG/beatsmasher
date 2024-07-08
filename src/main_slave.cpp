@@ -1,4 +1,4 @@
-
+/*
 #include "circuitRuntime.cpp"
 
 CircuitRuntime circuitRuntime;
@@ -15,7 +15,7 @@ void loop()
         circuitRuntime.update();
     }
 }
-
+*/
 
 /*
 #define MASTER_RX 21
@@ -97,3 +97,41 @@ void loop()
 {
     Serial.println(digitalRead(36));
 }*/
+/*
+
+#define I2C_SDA 27
+#define I2C_SCL 14
+
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+
+
+// Set the LCD address to 0x27 for a 16 chars and 2 line display
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+void setup() {
+    Wire.begin(I2C_SDA, I2C_SCL);
+    lcd.init();
+    lcd.backlight();
+    lcd.print("Hello, World!");
+    lcd.setCursor(0, 1);
+    lcd.print("Hello, Will :3");
+}
+
+void loop() {
+  // Your code here
+}*/
+
+#include <smash.h>
+
+void setup()
+{
+    smash::LcdDisplay display(0x27, 27, 14);
+    display.printRow(0, "Hello, Karl!");
+    display.printRow(1, "Hello, Will :3");
+}
+
+void loop()
+{
+
+}
