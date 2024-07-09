@@ -1,4 +1,4 @@
-/*
+
 #include "circuitRuntime.cpp"
 
 CircuitRuntime circuitRuntime;
@@ -15,7 +15,7 @@ void loop()
         circuitRuntime.update();
     }
 }
-*/
+
 
 /*
 #define MASTER_RX 21
@@ -121,7 +121,7 @@ void setup() {
 void loop() {
   // Your code here
 }*/
-
+/*
 #include <smash.h>
 
 void setup()
@@ -134,4 +134,4 @@ void setup()
 void loop()
 {
 
-}
+}*/

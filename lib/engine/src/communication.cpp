@@ -19,10 +19,15 @@ namespace smash
     const String Communication::_COM_SPEAKER_NOTE = "speakerNote";
     const String Communication::_COM_SPEAKER_SILENT = "speakerSilent";
     const String Communication::_COM_BUTTON_CHANGE = "buttonChange";
+    const String Communication::_COM_LCD_PRINT = "lcdPrint";
     String Communication::_COM_NUMBER(int number)
     {
         return String(number);
     } 
+    void Communication::_CMD_LCD_PRINT(int row, const String& text)
+    {
+        sendMessageToSlave(_COM_BEGIN + _COM_LCD_PRINT + _COM_SEPARATOR + _COM_NUMBER(row) + _COM_SEPARATOR + text + _COM_END);
+    }
     void Communication::_CMD_SPEAKER_NOTE(int index, note_t note, int octave)
     {
         sendMessageToSlave(_COM_BEGIN + _COM_SPEAKER_NOTE + _COM_SEPARATOR + _COM_NUMBER(index) + _COM_SEPARATOR + _COM_NUMBER(note) + _COM_SEPARATOR + _COM_NUMBER(octave) + _COM_END);

@@ -5,6 +5,7 @@
 #include "runtime.h"
 #include "speaker.h"
 #include "slaveInputSystem.h"
+#include "lcdDisplay.h"
 #include <vector>
 #include <memory>
 
@@ -16,6 +17,7 @@ namespace smash
         SlaveInputSystem m_inputSystem;
         HardwareSerial *m_masterSerial = nullptr;
         std::vector<std::shared_ptr<Speaker>> m_speakers;
+    	std::shared_ptr<LcdDisplay> m_lcdDisplay = nullptr;
     public:
 
         SlaveRuntime() = default;
@@ -30,6 +32,8 @@ namespace smash
         void addSpeaker(std::shared_ptr<Speaker> speaker);
 
         void addButton(SlaveButton button);
+
+        void setLcdDisplay(std::shared_ptr<LcdDisplay> lcdDisplay);
     };
 
 }

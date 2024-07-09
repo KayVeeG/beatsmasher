@@ -36,7 +36,6 @@ public:
         auto initialScene = std::make_shared<SampleScene>();
 
         // Add scene
-
         addScene(initialScene);
 
         // Set active scene

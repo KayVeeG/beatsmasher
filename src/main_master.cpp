@@ -19,14 +19,18 @@ void loop()
 
 /*
 #include <Arduino.h>
+#include <smash.h>
 
 void setup()
 {
     Serial.begin(115200);
+    smash::Communication::_CMD_LCD_PRINT(0, "Hello World");
 }
 
 void loop()
 {
-    Serial.println("Hello from Master!");
-    delay(1000);
-}*/
+}
+
+
+
+*/

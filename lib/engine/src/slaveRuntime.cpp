@@ -56,6 +56,14 @@ namespace smash
                         }
                     }
                 }
+                else if (splitMessage[0] == Communication::_COM_LCD_PRINT)
+                {
+                    int row = splitMessage[1].toInt();
+                    String text = splitMessage[2];
+                    text = text.substring(0, text.length() - 1);
+                    // Call the lcd print command
+                    m_lcdDisplay->printRow(row, text);
+                }
             }
             
             // Process master sends
@@ -80,5 +88,10 @@ namespace smash
     void SlaveRuntime::addButton(SlaveButton button)
     {
         m_inputSystem.addButton(button);
+    }
+
+    void SlaveRuntime::setLcdDisplay(std::shared_ptr<LcdDisplay> lcdDisplay)
+    {
+        m_lcdDisplay = lcdDisplay;
     }
 }

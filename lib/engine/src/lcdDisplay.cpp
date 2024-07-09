@@ -10,9 +10,19 @@ namespace smash
         lcd.backlight();
     }
 
-    void LcdDisplay::printRow(int row, const String& text)
+    void LcdDisplay::clearRow(int row)
     {
         lcd.setCursor(0, row);
-        lcd.print(text);
+        for (int i = 0; i < 16; i++) { // Adjust 16 to match your LCD's column count
+            lcd.print(" ");
+        }
+        lcd.setCursor(0, row); // Reset cursor to beginning of the row
+    }
+
+    void LcdDisplay::printRow(int row, const String& text)
+    {
+        clearRow(row);
+        lcd.setCursor(0, row);
+        lcd.print(text.c_str());
     }
 }
