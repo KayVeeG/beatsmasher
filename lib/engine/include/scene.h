@@ -14,6 +14,7 @@ namespace smash
     {
         friend class GameObject;
         std::vector<std::shared_ptr<GameObject>> m_gameObjects;
+        std::vector<GameObject*> m_gameObjectsToDestroy;
         ComponentsContainer m_componentsContainer;
     public:
 
@@ -24,7 +25,7 @@ namespace smash
         void render(Display& display);
 
         void instantiate(std::shared_ptr<GameObject> gameObject);
-        void destroy(std::shared_ptr<GameObject> gameObject);
+        void destroy(GameObject* gameObject);
 
     };
 }

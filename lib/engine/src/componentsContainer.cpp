@@ -45,7 +45,7 @@ namespace smash
         if (!_head)
             return;
 
-        if (_head->component->m_updateIndex == component.m_updateIndex)
+        if (_head->component == &component)
         {
             Node *temp = _head;
             _head = _head->next;
@@ -56,7 +56,7 @@ namespace smash
         }
 
         Node *current = _head;
-        while (current->next && current->next->component->m_updateIndex != component.m_updateIndex)
+        while (current->next && current->next->component != &component)
         {
             current = current->next;
         }
@@ -67,7 +67,7 @@ namespace smash
             current->next = current->next->next;
             delete temp;
             if (!current->next)
-                _tail = nullptr;
+                _tail = current;
         }
     }
 

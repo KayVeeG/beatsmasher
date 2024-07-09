@@ -46,7 +46,7 @@ namespace smash
         }
     }
 
-    void BehaviourScript::destroy(std::shared_ptr<GameObject> gameObject)
+    void BehaviourScript::destroy(GameObject* gameObject)
     {
         if (getScene())
         {

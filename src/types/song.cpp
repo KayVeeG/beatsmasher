@@ -38,7 +38,6 @@ public:
     {
         if (this != &other) // Check for self-assignment
         {
-            Serial.println("ACTUALLY COPYING QUEUE");
             tones = other.tones; // Use std::queue's assignment operator
         }
         return *this;

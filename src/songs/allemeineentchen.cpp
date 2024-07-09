@@ -6,39 +6,18 @@
 class AlleMeineEntchen : public Song
 {
 public:
+
     AlleMeineEntchen()
     {
-        // Assuming 4/4 time signature, quarter note = 1.0 duration
-        float timestamp = 0.0f;
-        int buttonIndex = 0; // Adjust as needed
+        addTone(SongTone(0, NOTE_C, 3, 1.0f, 0));
+        addTone(SongTone(1, NOTE_E, 3, 1.0f, 1));
+        addTone(SongTone(2, NOTE_G, 3, 1.0f, 2));
+        addTone(SongTone(3, NOTE_C, 4, 1.0f, 3));
+        addTone(SongTone(4, NOTE_C, 4, 1.0f, 0));
+        addTone(SongTone(5, NOTE_E, 4, 1.0f, 1));
+        addTone(SongTone(6, NOTE_G, 4, 1.0f, 2));
+        addTone(SongTone(7, NOTE_C, 5, 1.0f, 3));
 
-        // "Alle meine Entchen"
-        addTone(SongTone(timestamp, NOTE_C, 4, 1.0f, buttonIndex)); timestamp += 1.0f;
-        addTone(SongTone(timestamp, NOTE_D, 4, 1.0f, buttonIndex)); timestamp += 1.0f;
-        addTone(SongTone(timestamp, NOTE_E, 4, 1.0f, buttonIndex)); timestamp += 1.0f;
-        addTone(SongTone(timestamp, NOTE_F, 4, 1.0f, buttonIndex)); timestamp += 1.0f;
-
-        // "schwimmen auf dem See"
-        addTone(SongTone(timestamp, NOTE_G, 4, 1.0f, buttonIndex)); timestamp += 1.0f;
-        addTone(SongTone(timestamp, NOTE_G, 4, 1.0f, buttonIndex)); timestamp += 1.0f;
-        addTone(SongTone(timestamp, NOTE_A, 4, 1.0f, buttonIndex)); timestamp += 1.0f;
-        addTone(SongTone(timestamp, NOTE_A, 4, 1.0f, buttonIndex)); timestamp += 1.0f;
-
-        // "schwimmen auf dem See" (repeat)
-        addTone(SongTone(timestamp, NOTE_G, 4, 1.0f, buttonIndex)); timestamp += 1.0f;
-        addTone(SongTone(timestamp, NOTE_G, 4, 1.0f, buttonIndex)); timestamp += 1.0f;
-        addTone(SongTone(timestamp, NOTE_F, 4, 2.0f, buttonIndex)); timestamp += 2.0f;
-
-        // "Köpfchen in das Wasser"
-        addTone(SongTone(timestamp, NOTE_A, 4, 1.0f, buttonIndex)); timestamp += 1.0f;
-        addTone(SongTone(timestamp, NOTE_A, 4, 1.0f, buttonIndex)); timestamp += 1.0f;
-        addTone(SongTone(timestamp, NOTE_A, 4, 1.0f, buttonIndex)); timestamp += 1.0f;
-        addTone(SongTone(timestamp, NOTE_A, 4, 1.0f, buttonIndex)); timestamp += 1.0f;
-
-        // "Schwänzchen in die Höh"
-        addTone(SongTone(timestamp, NOTE_G, 4, 1.0f, buttonIndex)); timestamp += 1.0f;
-        addTone(SongTone(timestamp, NOTE_G, 4, 1.0f, buttonIndex)); timestamp += 1.0f;
-        addTone(SongTone(timestamp, NOTE_F, 4, 2.0f, buttonIndex)); timestamp += 2.0f;
     }
     ~AlleMeineEntchen() = default;
 };

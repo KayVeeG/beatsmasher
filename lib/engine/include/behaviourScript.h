@@ -21,7 +21,7 @@ namespace smash
         Scene* getScene();
 
         void instantiate(std::shared_ptr<GameObject> gameObject);
-        void destroy(std::shared_ptr<GameObject> gameObject);        
+        void destroy(GameObject* gameObject);        
 
     };
 }

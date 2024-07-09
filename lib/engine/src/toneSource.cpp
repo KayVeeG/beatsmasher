@@ -51,7 +51,6 @@ namespace smash
 
     void ToneSource::abort()
     {
-        Serial.println("Aborting tone source");
         Communication::_CMD_SPEAKER_SILENT(m_speakerIndex);
         m_expandedDuration = -1;
     }

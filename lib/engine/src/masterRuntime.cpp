@@ -5,7 +5,20 @@ namespace smash
     
     void MasterRuntime::provideSlaveInputs()
     {
-        Communication::decodeMessage(Serial);
+        // Process master recieves
+        std::vector<String> splitMessage = Communication::decodeMessage(Serial);
+
+        // Select the command
+        if (splitMessage.size() > 0)
+        {
+            if (splitMessage[0] == Communication::_COM_BUTTON_CHANGE)
+            {
+                int index = splitMessage[1].toInt();
+                bool state = splitMessage[2].toInt();
+                // Change button in input system
+                m_inputSystem.registerInput(index, state);
+            }
+        }
     }
     
 
@@ -13,6 +26,9 @@ namespace smash
     {
         // Get frame start time
         uint64_t currentTime = esp_timer_get_time();
+
+        // Set input system
+        g_inputSystem = &m_inputSystem; 
 
         // Provide slave inputs
         provideSlaveInputs();
@@ -36,6 +52,9 @@ namespace smash
                 }
             }
         }
+
+        // Input System after frame
+        m_inputSystem.afterFrame();
 
         // Calculate delta time for next frame
         m_deltaTime = (double)(esp_timer_get_time() - currentTime) / 1000000.0;

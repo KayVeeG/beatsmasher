@@ -24,6 +24,13 @@ public:
         // Instantiate tone generator
         instantiate(std::static_pointer_cast<smash::GameObject>(toneGenerator));
 
+        /*
+
+       instantiate(std::make_shared<NoteBlock>(0.0f, 0, NOTE_C, 4, 1.0f));
+       instantiate(std::make_shared<NoteBlock>(1.0f, 1, NOTE_E, 4, 1.0f));
+       instantiate(std::make_shared<NoteBlock>(2.0f, 2, NOTE_G, 4, 1.0f));
+       instantiate(std::make_shared<NoteBlock>(3.0f, 3, NOTE_C, 5, 3.0f));
+*/
     }
     ~SampleScene() = default;
 

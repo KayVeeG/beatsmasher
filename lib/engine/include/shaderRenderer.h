@@ -15,7 +15,7 @@ namespace smash
         ShaderRenderer();
         ~ShaderRenderer() = default;
 
-        void render(Display& display) override;
+        void render(Canvas& canvas) override;
 
         void setShaderAttributes(std::shared_ptr<ShaderAttributes> shattr);
 

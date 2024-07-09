@@ -46,10 +46,11 @@ namespace smash
 
     std::vector<String> Communication::decodeMessage(HardwareSerial& senderSerial)
     {
-        constexpr size_t maxMessageCharCheck = 100;
+        constexpr size_t maxMessageCharCheck = 2000;
 
         // Receive slave input information
         String message = "";
+        bool validMessage = false;
         for (int i = 0; i < maxMessageCharCheck; i++)
         {
             char c = senderSerial.read();
@@ -58,7 +59,11 @@ namespace smash
             {
                 break;
             }
-            if (i == maxMessageCharCheck - 1)
+            if (message.startsWith(Communication::_COM_BEGIN))
+            {
+                validMessage = true;
+            }
+            if (i == maxMessageCharCheck - 1 && !validMessage)
             {
                 return std::vector<String>();
             }
@@ -74,7 +79,8 @@ namespace smash
         }
         
         message = message.substring(Communication::_COM_BEGIN.length(), message.length());
-        
+
+
         std::vector<String> splitMessage;
 
         int startIndex = 0;

@@ -8,7 +8,6 @@ namespace smash
     {
         int channel = s_availableChannels.back();
         s_availableChannels.pop_back();
-        Serial.println("Making channel available: " + String(channel));
         return channel;
     }
 
@@ -31,7 +30,6 @@ namespace smash
 
     void Speaker::playNote(note_t note, int octave)
     {
-        Serial.println("Playing on channel: " + String(m_channel));
         ledcWriteNote(m_channel, note, octave);
     }
 

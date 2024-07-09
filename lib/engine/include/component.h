@@ -22,7 +22,7 @@ namespace smash
         GameObject* getGameObject() const;
 
         virtual void update(double deltaTime) {};
-        virtual void render(Display& display) {};
+        virtual void render(Canvas& canvas) {};
         virtual std::string getTypeName() const = 0;
 
     };

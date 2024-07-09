@@ -32,6 +32,7 @@ namespace smash
             {
                 if (splitMessage[0] == Communication::_COM_SPEAKER_NOTE)
                 {
+                    
                     int index = splitMessage[1].toInt();
                     note_t note = (note_t)splitMessage[2].toInt();
                     int octave = splitMessage[3].toInt();

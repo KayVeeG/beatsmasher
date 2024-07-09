@@ -21,3 +21,4 @@
 #include "slaveInputSystem.h"
 #include "inputSystem.h"
 #include "lcdDisplay.h"
+#include "global.h"

@@ -11,9 +11,10 @@ public:
     NoteBlock(float timestamp, int buttonIndex, note_t note, int octave, float duration)
     {
         // Init transform
-        float timeStampTransform = 0.0f - timestamp * NoteBlockLogic::s_fallSpeed;
+        float durationScale = duration * NoteBlockLogic::s_fallSpeed;
+        float timeStampTransform = 0.0f - timestamp * NoteBlockLogic::s_fallSpeed - durationScale;
         float buttonTransform = 28.0f - (float)buttonIndex * 4.0f;
-        auto transform = std::make_shared<smash::Transform>(timeStampTransform, buttonTransform, duration * NoteBlockLogic::s_fallSpeed, 4.0f);
+        auto transform = std::make_shared<smash::Transform>(timeStampTransform, buttonTransform, durationScale, 4.0f);
 
         // Init shader renderer
         auto shaderRenderer = std::make_shared<smash::ShaderRenderer>();
@@ -32,6 +33,7 @@ public:
 
         // Init note block logic
         auto noteBlockLogic = std::make_shared<NoteBlockLogic>();
+        noteBlockLogic->setButtonIndex(buttonIndex);
 
         // Init tone source
         auto toneSource = std::make_shared<smash::ToneSource>();
@@ -42,10 +44,6 @@ public:
 
         // Add components
         addComponent(transform);
-        Serial.print("X Position:");
-        Serial.println(transform->getPositionRef().x);
-        Serial.print("Y Position:");
-        Serial.println(transform->getPositionRef().y);
         addComponent(shaderRenderer);
         addComponent(noteBlockLogic);
         addComponent(toneSource);

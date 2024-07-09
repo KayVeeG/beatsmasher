@@ -135,3 +135,52 @@ void loop()
 {
 
 }*/
+/*
+#include <Arduino.h>
+
+#define SPEAKER_0 12
+#define SPEAKER_1 13
+#define SPEAKER_2 19
+#define SPEAKER_3 18
+#define SPEAKER_4 5
+#define SPEAKER_5 23
+
+void setup()
+{
+    ledcSetup(0, 5000, 8);
+    ledcAttachPin(SPEAKER_0, 0);
+    ledcSetup(1, 5000, 8);
+    ledcAttachPin(SPEAKER_1, 1);
+    ledcSetup(2, 5000, 8);
+    ledcAttachPin(SPEAKER_2, 2);
+    ledcSetup(3, 5000, 8);
+    ledcAttachPin(SPEAKER_3, 3);
+    ledcSetup(4, 5000, 8);
+    ledcAttachPin(SPEAKER_4, 4);
+    ledcSetup(5, 5000, 8);
+    ledcAttachPin(SPEAKER_5, 5);
+}
+
+void loop()
+{
+    ledcWriteNote(0, NOTE_C, 4);
+    delay(1000);
+    ledcWriteTone(0, 0);
+    ledcWriteNote(1, NOTE_E, 4);
+    delay(1000);
+    ledcWriteTone(1, 0);
+    ledcWriteNote(2, NOTE_G, 4);
+    delay(1000);
+    ledcWriteTone(2, 0);
+    ledcWriteNote(3, NOTE_C, 5);
+    delay(1000);
+    ledcWriteTone(3, 0);
+    ledcWriteNote(4, NOTE_E, 5);
+    delay(1000);
+    ledcWriteTone(4, 0);
+    ledcWriteNote(5, NOTE_G, 5);
+    delay(1000);
+    ledcWriteTone(5, 0);
+    delay(1000);
+}
+*/

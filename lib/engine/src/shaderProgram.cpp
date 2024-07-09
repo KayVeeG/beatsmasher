@@ -9,7 +9,6 @@ namespace smash
 
     void ShaderProgram::addShader(std::shared_ptr<Shader> shdr)
     {
-        Serial.println("ADDING SHADER");
         auto newNode = std::make_shared<ShaderNode>(shdr);
         newNode->next = head;
         head = newNode;
@@ -71,7 +70,6 @@ namespace smash
         std::shared_ptr<ShaderNode> current = head;
         while (current)
         {
-            Serial.println("USING A SHADER");
             current->shader->execute(shattr, cvs);
             current = current->next;
         }
