@@ -11,7 +11,7 @@ class NoteGeneratorLogic : public smash::BehaviourScript
     bool m_songGenerated = false;
     void generateSong()
     {
-        /*
+        
         SongTone tone = m_song.readTone();
         while (tone.timestamp != -1)
         {
@@ -21,19 +21,8 @@ class NoteGeneratorLogic : public smash::BehaviourScript
 
             // next tone
             tone = m_song.readTone();
-        }*/
+        }
 
-        // Generate note block
-        auto instance = std::make_shared<NoteBlock>(0.0f, 0, NOTE_C, 4, 1.0f);
-        instantiate(instance);
-
-        // Generate note block
-        auto instance2 = std::make_shared<NoteBlock>(0.0f, 1, NOTE_E, 4, 1.0f);
-        instantiate(instance2);
-
-        // Generate note block
-        //instance = std::make_shared<NoteBlock>(-2.0f, 2, NOTE_G, 4, 3.0f);
-        //instantiate(instance);
     }
 public:
     NoteGeneratorLogic() = default;
