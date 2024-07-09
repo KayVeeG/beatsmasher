@@ -35,7 +35,9 @@ namespace smash
 
         // Check for valid frame with provided delta time
         if (m_deltaTime >= 0)
-        {
+        {   
+
+            g_deltaTime = m_deltaTime;
             // Check for active scene
             if (m_activeScene)
             {

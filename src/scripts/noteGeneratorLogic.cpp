@@ -67,4 +67,9 @@ void NoteGeneratorLogic::generateNextNote()
         }
         instantiate(instance);
     }
+    else
+    {
+        smash::Communication::_CMD_LCD_PRINT(0, "Your score is: ");
+        smash::Communication::_CMD_LCD_PRINT(1, std::to_string(smash::g_score).c_str());
+    }
 }

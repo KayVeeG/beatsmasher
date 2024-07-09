@@ -61,7 +61,7 @@ public:
 
                 else if (smash::g_inputSystem->getButtonReleased(m_buttonIndex))
                 {
-                    toneSource->abort();
+                    //toneSource->abort();
                 }
                 else
                 {

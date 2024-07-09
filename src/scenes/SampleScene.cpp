@@ -4,7 +4,9 @@
 #include <smash.h>
 #include "../prefabs/noteBlock.cpp"
 #include "../prefabs/noteGenerator.cpp"
-#include "../songs/AlleMeineEntchen.cpp"
+#include "../songs/cantinaBand.cpp"
+#include "../songs/marioOverworldTheme.cpp"
+#include "../songs/gameOfThronesTheme.cpp"
 
 class SampleScene : public smash::Scene
 {
@@ -17,7 +19,7 @@ public:
         auto toneGenerator = std::make_shared<ToneGenerator>();
         
         // Set the song
-        auto song = AlleMeineEntchen();
+        auto song = GameOfThronesTheme();
         auto noteGeneratorLogic = (NoteGeneratorLogic*)toneGenerator->getComponent("NoteGeneratorLogic");
         noteGeneratorLogic->setSong(song);
 

@@ -4,6 +4,8 @@
 #include <smash.h>
 #include "../shaders/dynamicRectFrag.cpp"
 #include "../scripts/noteBlockLogic.cpp"
+#include "../shaders/RainbowMadness.cpp"
+#include "../shaders/CosmicNebula.cpp"
 
 class NoteBlock : public smash::GameObject
 {
@@ -21,6 +23,7 @@ public:
 
         // Init shaders
         auto baseShader = std::make_shared<DynamicRectFragment>();
+        auto fancyShader = std::make_shared<CosmicNebula>();
 
         // Init shader attributes
         auto shaderAttributes = std::make_shared<smash::ShaderAttributes>();
@@ -30,6 +33,7 @@ public:
         // Add shader attributes and shaders
         shaderRenderer->setShaderAttributes(shaderAttributes);
         shaderRenderer->getShaderProgram().addShader(baseShader);
+        shaderRenderer->getShaderProgram().addShader(fancyShader);
 
         // Init note block logic
         auto noteBlockLogic = std::make_shared<NoteBlockLogic>();
