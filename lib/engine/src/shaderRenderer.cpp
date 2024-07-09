@@ -15,10 +15,25 @@ namespace smash
 
         if (!m_shaderAttributes)
         {
-            m_shaderAttributes = std::make_shared<ShaderAttributes>();    
+             m_shaderAttributes = std::make_shared<ShaderAttributes>();    
         }
 
         // Use the shader program with the current attributes and canvas
+
+        auto transform = (Transform*)getGameObject()->getComponent("Transform");
+        if (transform)
+        {
+            if (transform->getPositionRef().y  == 28.00f)
+            {
+                Serial.println("RENDERING FIRST OBJECT");
+            }
+            else if (transform->getPositionRef().y == 24.00f)
+            {
+                Serial.println("RENDERING SECOND OBJECT");
+            }
+        }
+
+
         m_shaderProgram.use(*m_shaderAttributes, canvas);
 
         // Draw the canvas

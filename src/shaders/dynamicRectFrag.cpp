@@ -10,7 +10,7 @@ protected:
     {
         vec2 pos = *(vec2*)(gp("p_Position"));
         vec2 scal = *(vec2*)(gp("p_Scale"));
-
+        
         if (x >= (size_t)pos.x && x < (size_t)pos.x + (size_t)scal.x && y >= (size_t)pos.y && y < (size_t)pos.y + (size_t)scal.y)
         {
             _color = color(255, 255, 255);

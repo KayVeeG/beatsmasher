@@ -7,7 +7,7 @@ class NoteBlockLogic : public smash::BehaviourScript
 {
     bool m_TonePlaySent = false;
 public:
-    static constexpr float s_fallSpeed = 10.0f;
+    static constexpr float s_fallSpeed = 5.0f;
 
     NoteBlockLogic() = default;
     ~NoteBlockLogic() = default;

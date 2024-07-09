@@ -24,6 +24,11 @@ namespace smash
         size_t getWidth() const { return m_width; }
         size_t getHeight() const { return m_height; }
 
+        Canvas(const Canvas& other); // Copy constructor
+        Canvas& operator=(const Canvas& other); // Assignment operator
+
+        void fuze(const Canvas& other);
+
     };
 }
 

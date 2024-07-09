@@ -15,6 +15,10 @@ namespace smash
 
         uint16_t toRGB565() const;
 
+        bool operator==(const Color& other) const {
+            return r == other.r && g == other.g && b == other.b;
+        }
+
         static Color black;
         static Color white;
         static Color red;

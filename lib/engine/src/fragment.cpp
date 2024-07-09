@@ -5,6 +5,7 @@ namespace smash
 {
     void Fragment::shade() const
     {
+        Serial.println("USING FRAG SHADE");
         for (size_t x = 0; x < gwidth(); ++x)
         {
             for (size_t y = 0; y < gheight(); ++y)
